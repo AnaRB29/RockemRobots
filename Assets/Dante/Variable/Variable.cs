@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Variable : MonoBehaviour
+public abstract class Variable<T> : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    private T _value = default;
+    public T Value
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        get => _value;
+        set => _value = value;
     }
 }
