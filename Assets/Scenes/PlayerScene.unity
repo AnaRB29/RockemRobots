@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 2012496958}
   - component: {fileID: 2012496957}
   - component: {fileID: 2012496956}
+  - component: {fileID: 2012496960}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -498,3 +499,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2012496960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012496955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33dc4d88c404b254386918bcb36fcb77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Movement
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 3fde83db-b059-4d1f-a8d7-fe7d6d4bbc85
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 6170994965268402010, guid: c7a38c336f8ad9c488b49ac8e709b80e, type: 3}
