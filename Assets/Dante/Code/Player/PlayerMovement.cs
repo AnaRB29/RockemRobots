@@ -3,16 +3,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private InputActionProperty _movementAction;
+    [Header("Player Input")]
+    [SerializeField] private AxisReference _horizontalMove;
+    [SerializeField] private AxisReference _verticalMove;
 
     [Header("Config")] [SerializeField] private float _speed;
 
-    private Vector3 _vectorMove;
+    private Vector3 _vectorMove = Vector3.zero;
     private void Update()
     {
         GetInput();
 
-        Debug.Log($"Vector: {_movementAction.action.ReadValue<Vector2>()}");
+        Debug.Log($"Vector: {_vectorMove.ToString()}");
 
         var position = transform.position;
         position += _vectorMove * _speed;
@@ -21,8 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void GetInput()
     {
-        _vectorMove = _movementAction.action.ReadValue<Vector2>();
-        //_vectorMove.x = vectorMove.x;
-        //_vectorMove.z = vectorMove.y;
+        _vectorMove.x = _horizontalMove.Value;
+        _vectorMove.z = _verticalMove.Value;
     }
 }
