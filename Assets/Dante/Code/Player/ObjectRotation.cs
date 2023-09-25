@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class ObjectRotation : MonoBehaviour
 {
-    [SerializeField] private MouseInput mouseInput;
+    [SerializeField] private VariableReference<Vector3> mouseInput;
+    [SerializeField] private VectorAxis axisToRotate;
 
     private Vector3 _oldPosition = Vector3.zero;
+    private float _currentRotation;
     private void Update()
     {
-        var deltaPos = _oldPosition - mouseInput.Position;
+        var deltaPos = _oldPosition - mouseInput.Value;
         Debug.Log(deltaPos, gameObject);
+
+        _oldPosition = mouseInput.Value;
     }
 }
