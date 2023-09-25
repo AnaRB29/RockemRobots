@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log($"Vector: {_vectorMove.ToString()}");
 
         var position = transform.position;
-        position += _vectorMove * _speed;
+        position += _speed * Time.deltaTime * _vectorMove;
         transform.position = position;
     }
 

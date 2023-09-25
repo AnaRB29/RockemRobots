@@ -589,56 +589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33dc4d88c404b254386918bcb36fcb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementAction:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Movement
-      m_Type: 0
-      m_ExpectedControlType: Vector2
-      m_Id: 3fde83db-b059-4d1f-a8d7-fe7d6d4bbc85
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings:
-      - m_Name: 2D Vector
-        m_Id: d44c4c1d-16c5-4a3b-a673-85cfa3a40fb9
-        m_Path: 2DVector
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Movement
-        m_Flags: 4
-      - m_Name: up
-        m_Id: f428aab3-ccbd-405a-bf96-5bfa2eff9870
-        m_Path: <Keyboard>/w
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Movement
-        m_Flags: 8
-      - m_Name: down
-        m_Id: 89b424a5-c51e-447c-ba45-315c957cb987
-        m_Path: <Keyboard>/s
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Movement
-        m_Flags: 8
-      - m_Name: left
-        m_Id: b93d56dc-bcec-4558-b286-d6c2cbd75173
-        m_Path: <Keyboard>/a
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Movement
-        m_Flags: 8
-      - m_Name: right
-        m_Id: 636f0a63-8736-4ef3-a206-e6f88f60b3ee
-        m_Path: <Keyboard>/d
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Movement
-        m_Flags: 8
-      m_Flags: 0
-    m_Reference: {fileID: 6170994965268402010, guid: c7a38c336f8ad9c488b49ac8e709b80e, type: 3}
+  _horizontalMove:
+    _axisName: Horizontal
+  _verticalMove:
+    _axisName: Vertical
   _speed: 5

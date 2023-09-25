@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public struct AxisReference
+public class AxisReference
 {
     [SerializeField] private string _axisName;
 
