@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Player Input")]
-    [SerializeField] private AxisReference _horizontalMove;
-    [SerializeField] private AxisReference _verticalMove;
+    [Header("Player Move Input")]
+    [SerializeField] private AxisReference horizontalMove;
+    [SerializeField] private AxisReference verticalMove;
 
     [Header("Config")] [SerializeField] private float _speed;
 
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void GetInput()
     {
-        _vectorMove.x = _horizontalMove.Value;
-        _vectorMove.z = _verticalMove.Value;
+        _vectorMove.x = horizontalMove.Value;
+        _vectorMove.z = verticalMove.Value;
     }
 }
