@@ -14,10 +14,9 @@ public class PlayerMovement : MonoBehaviour
     {
         GetInput();
 
-        Debug.Log($"Vector: {_vectorMove.ToString()}");
-
         var position = transform.position;
         position += _speed * Time.deltaTime * _vectorMove;
+        
         transform.position = position;
     }
 
@@ -25,5 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _vectorMove.x = horizontalMove.Value;
         _vectorMove.z = verticalMove.Value;
+
+        _vectorMove = transform.rotation * _vectorMove;
     }
 }

@@ -483,14 +483,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644766177}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0.49560633, y: -0, z: -0, w: 0.86854726}
   m_LocalPosition: {x: 0, y: 0.5, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2012496959}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -59.419, y: 0, z: 0}
 --- !u!114 &1644766181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -503,11 +503,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4b8962dcec00b489f59c657a781ac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseInput:
-    useConstant: 0
-    variable: {fileID: 0}
-    constant: {x: 0, y: 0, z: 0}
+  mouseInput: {fileID: 2012496961}
   axisToRotate: 0
+  axisToDelta: 1
+  useClamp: 1
+  invertRotation: 0
+  minAngle: -60
+  maxAngle: 30
 --- !u!1 &2012496955
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,9 +624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33dc4d88c404b254386918bcb36fcb77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _horizontalMove:
+  horizontalMove:
     _axisName: Horizontal
-  _verticalMove:
+  verticalMove:
     _axisName: Vertical
   _speed: 5
 --- !u!114 &2012496961
@@ -639,7 +641,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f6a13c9e9e5c3f42a7c8ed2e98cda74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mousePositionType: 1
+  mouseInput: {fileID: 0}
+  mousePositionType: 0
   mouseCamera: {fileID: 1644766179}
 --- !u!114 &2012496962
 MonoBehaviour:
@@ -653,8 +656,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4b8962dcec00b489f59c657a781ac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseInput:
-    useConstant: 0
-    variable: {fileID: 0}
-    constant: {x: 0, y: 0, z: 0}
-  axisToRotate: 0
+  mouseInput: {fileID: 2012496961}
+  axisToRotate: 1
+  axisToDelta: 0
+  useClamp: 0
+  invertRotation: 1
+  minAngle: 0
+  maxAngle: 0

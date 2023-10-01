@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Variable<T> : ScriptableObject
+namespace Dante.Variable
 {
-    private T _value = default;
-    public T Value
+    public abstract class Variable<T> : ScriptableObject
     {
-        get => _value;
-        set => _value = value;
+        private T _value = default;
+
+        public T Value
+        {
+            get => _value;
+            set => _value = value;
+        }
     }
 }

@@ -1,22 +1,20 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public class VariableReference<T>
+namespace Dante.Variable
 {
-    [SerializeField] private bool useConstant;
-
-    [SerializeField] private Variable<T> variable;
-
-    [SerializeField] private T constant;
-
-    public T Value
+    [Serializable]
+    public class VariableReference<T>
     {
-        get
+        [SerializeField] private bool useConstant;
+
+        [SerializeField] private Variable<T> variable;
+
+        [SerializeField] private T constant;
+
+        public T Value
         {
-            return useConstant ? constant : variable.Value;
+            get { return useConstant ? constant : variable.Value; }
         }
     }
 }

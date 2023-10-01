@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Dante.Variable;
+
 public class MouseInput : MonoBehaviour
 {
+    [SerializeField] private Variable<Vector3> mouseInput = null;
     
     private enum PositionType
     {
@@ -29,13 +32,15 @@ public class MouseInput : MonoBehaviour
             var mouseScreenPos = Input.mousePosition;
             var worldPos = mouseCamera.ScreenToWorldPoint(mouseScreenPos);
             worldPos.z = 0;
-            return mousePositionType switch
+            var mousePos =  mousePositionType switch
             {
                 PositionType.ScreenPos => mouseScreenPos,
                 PositionType.WorldPos => worldPos,
                 PositionType.ViewPort => mouseCamera.ScreenToViewportPoint(mouseScreenPos)
             };
-            
+            if (mouseInput != null)
+                mouseInput.Value = mousePos;
+            return mousePos;
         }
     }
 }
