@@ -40,9 +40,7 @@ public class ActiveRagdol : MonoBehaviour
             enableRagdoll = true; // Activa el Ragdoll globalmente
             SetEnabled(enableRagdoll);
 
-            // También puedes agregar una función para hacer que el personaje se "caiga" si es necesario.
-            // Por ejemplo, si tienes un personaje en pie en un inicio, puedes hacer que se incline hacia adelante.
-            // Puedes ajustar esta parte según las necesidades de tu personaje y escenario.
+            
         }
         if (Input.GetKeyDown(KeyCode.T))
         {

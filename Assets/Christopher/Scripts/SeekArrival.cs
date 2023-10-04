@@ -7,8 +7,9 @@ public class SeekArrival : MonoBehaviour
 {
     public Transform target;
     public float speed = 5.0f;
-    public float rotationSpeed = 5.0f; // Nueva variable para la velocidad de rotación
+    public float rotationSpeed = 5.0f;
     public float stoppingDistance = 1.0f;
+    public bool ragdollActive = false; // Variable para controlar si el Ragdoll está activado
 
     private void Update()
     {
@@ -18,28 +19,37 @@ public class SeekArrival : MonoBehaviour
             return;
         }
 
-        // Calcula la dirección hacia el objetivo
-        Vector3 direction = (target.position - transform.position).normalized;
-
-        // Calcula la rotación hacia la dirección del objetivo
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-
-        // Aplica la rotación gradualmente
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-        // Calcula la distancia al objetivo
-        float distance = Vector3.Distance(transform.position, target.position);
-
-        // Si estamos lo suficientemente cerca del objetivo, reduce la velocidad para la llegada suave
-        if (distance <= stoppingDistance)
+        if (!ragdollActive) // Verifica si el Ragdoll está desactivado
         {
-            float arrivalSpeed = Mathf.Lerp(0, speed, distance / stoppingDistance);
-            transform.position += transform.forward * arrivalSpeed * Time.deltaTime;
+            // Calcula la dirección hacia el objetivo
+            Vector3 direction = (target.position - transform.position).normalized;
+
+            // Calcula la rotación hacia la dirección del objetivo
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+            // Aplica la rotación gradualmente
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+            // Calcula la distancia al objetivo
+            float distance = Vector3.Distance(transform.position, target.position);
+
+            // Si estamos lo suficientemente cerca del objetivo, reduce la velocidad para la llegada suave
+            if (distance <= stoppingDistance)
+            {
+                float arrivalSpeed = Mathf.Lerp(0, speed, distance / stoppingDistance);
+                transform.position += transform.forward * arrivalSpeed * Time.deltaTime;
+            }
+            else
+            {
+                // Si estamos lejos del objetivo, aplica velocidad máxima
+                transform.position += transform.forward * speed * Time.deltaTime;
+            }
         }
-        else
-        {
-            // Si estamos lejos del objetivo, aplica velocidad máxima
-            transform.position += transform.forward * speed * Time.deltaTime;
-        }
+    }
+
+    // Agrega una función para activar/desactivar el Ragdoll desde otro script si es necesario
+    public void SetRagdollActive(bool isActive)
+    {
+        ragdollActive = isActive;
     }
 }
