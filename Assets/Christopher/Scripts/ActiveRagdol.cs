@@ -6,34 +6,48 @@ public class ActiveRagdol : MonoBehaviour
 {
     [SerializeField] private Animator animator;
 
-    private Rigidbody[] rigidbodies;
+    [Header("Ragdoll Parts")]
+    [SerializeField] private Rigidbody[] ragdollRigidbodies;
+    [SerializeField] private Collider[] ragdollColliders;
 
-    void Start()
+    [SerializeField] private bool enableRagdoll = false; // Control global del Ragdoll
+
+    private void Start()
     {
-        rigidbodies = transform.GetComponentsInChildren<Rigidbody>();
-        SetEnabled(false);
+        // Configura el estado inicial
+        SetEnabled(enableRagdoll);
     }
 
-    void SetEnabled(bool enabled)
+    private void SetEnabled(bool enabled)
     {
-        bool isKinematic = !enabled;
-        foreach (Rigidbody rigidbody in rigidbodies)
+        foreach (Rigidbody rb in ragdollRigidbodies)
         {
-            rigidbody.isKinematic = isKinematic;
+            rb.isKinematic = !enabled; // Activa o desactiva la física
         }
 
-        animator.enabled = !enabled;
+        foreach (Collider collider in ragdollColliders)
+        {
+            collider.enabled = enabled; // Activa o desactiva los colliders
+        }
+
+        animator.enabled = !enabled; // Activa o desactiva la animación
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SetEnabled(true);
+            enableRagdoll = true; // Activa el Ragdoll globalmente
+            SetEnabled(enableRagdoll);
+
+            // También puedes agregar una función para hacer que el personaje se "caiga" si es necesario.
+            // Por ejemplo, si tienes un personaje en pie en un inicio, puedes hacer que se incline hacia adelante.
+            // Puedes ajustar esta parte según las necesidades de tu personaje y escenario.
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
-            SetEnabled(false);
+            enableRagdoll = false; // Desactiva el Ragdoll globalmente
+            SetEnabled(enableRagdoll);
         }
     }
 }
