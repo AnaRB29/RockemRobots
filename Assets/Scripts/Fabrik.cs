@@ -26,7 +26,7 @@ public class Fabrik : MonoBehaviour
         {
             if (i < bones.Length - 1)
             {
-                boneLeghts[i] = (bones[i + 1].position - bones[i].position).magnitude;
+                boneLeghts[i] = (bones[i + 1].localPosition - bones[i].localPosition).magnitude;
             }
             else
             {
@@ -34,7 +34,7 @@ public class Fabrik : MonoBehaviour
             }
         }
 
-        startPosition = bones[0].position;
+        startPosition = bones[0].localPosition;
 
     }
     
@@ -49,7 +49,7 @@ public class Fabrik : MonoBehaviour
 
         for (int i = 0; i < bones.Length; i++)
         {
-            finalBonePositions[i] = bones[i].position;
+            finalBonePositions[i] = bones[i].localPosition;
         }
 
         for (int i = 0; i < solverIterations; i++)
@@ -59,11 +59,11 @@ public class Fabrik : MonoBehaviour
 
         for (int i = 0; i < bones.Length; i++)
         {
-            bones[i].position = finalBonePositions[i];
+            bones[i].localPosition = finalBonePositions[i];
 
             if (i != bones.Length - 1)
             {
-                bones[i].rotation = Quaternion.LookRotation(finalBonePositions[i + 1] - bones[i].position);
+                bones[i].rotation = Quaternion.LookRotation(finalBonePositions[i + 1] - bones[i].localPosition);
             }
             else
             {
