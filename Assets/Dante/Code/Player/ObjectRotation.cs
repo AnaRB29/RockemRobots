@@ -23,7 +23,7 @@ public class ObjectRotation : MonoBehaviour
         var axis = CalculateAxis();
         var rot = CalculateRotation(delta, axis);
         
-        transform.rotation = rot;
+        transform.localRotation = rot;
 
         _oldPosition = mouseInput.Position;
     }
