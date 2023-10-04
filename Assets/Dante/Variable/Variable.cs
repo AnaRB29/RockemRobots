@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Variable : MonoBehaviour
+namespace Dante.Variable
 {
-    // Start is called before the first frame update
-    void Start()
+    public abstract class Variable<T> : ScriptableObject
     {
-        
-    }
+        private T _value = default;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public T Value
+        {
+            get => _value;
+            set => _value = value;
+        }
     }
 }
