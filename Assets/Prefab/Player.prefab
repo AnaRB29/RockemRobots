@@ -1361,10 +1361,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseButton: 1
-  speed: 3
+  speed: 5
+  _maskOfPunch:
+    serializedVersion: 2
+    m_Bits: 0
+  hitRadius: 0.5
   target: {fileID: 1237115784496615145}
   foldTarget: {fileID: 1136157798}
   unfoldTarget: {fileID: 273316441}
+  onPunched:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1237115784125872610
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,10 +1440,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseButton: 0
-  speed: 3
+  speed: 5
+  _maskOfPunch:
+    serializedVersion: 2
+    m_Bits: 0
+  hitRadius: 0.5
   target: {fileID: 1237115783618663403}
   foldTarget: {fileID: 887677384}
   unfoldTarget: {fileID: 2080798150}
+  onPunched:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1237115784496615149
 GameObject:
   m_ObjectHideFlags: 0
