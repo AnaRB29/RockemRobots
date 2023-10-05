@@ -33,34 +33,47 @@ public class PunchHand : MonoBehaviour
 
     void Update()
     {
-        _isPressing = Input.GetMouseButton((int)mouseButton);
-
-        var currentTarget = _isPressing ? unfoldTarget : foldTarget;
-        target.position = Vector3.MoveTowards(target.position, currentTarget.position, speed * Time.deltaTime);
-
-        if (target.position.sqrMagnitude >= unfoldTarget.position.sqrMagnitude - Mathf.Epsilon * 10)
-            HandlePunch();
+        if (!Input.GetMouseButtonDown((int)mouseButton)) return;
+        HandlePunch();
     }
-
+    
     private void HandlePunch()
     {
         if (_punchCoroutine != null) return;
         _punchCoroutine = StartCoroutine(PunchCoroutine());
     }
+    
+    private IEnumerator MoveToPosCoroutine(Transform targetToMove)
+    {
+        while (target.position != targetToMove.position)
+        {
+            target.position = Vector3.MoveTowards(target.position, targetToMove.position, speed * Time.deltaTime);
+            yield return null;
+        }
+    }
 
     private Coroutine _punchCoroutine = null;
     private IEnumerator PunchCoroutine()
     {
-        Physics.OverlapSphereNonAlloc(unfoldTarget.position, hitRadius, _colliders, _maskOfPunch);
-        for (int i = 0; i < _colliders.Length; i++)
+        yield return StartCoroutine(MoveToPosCoroutine(unfoldTarget));
+        Debug.Log("Bajo la mano");
+        
+        var touched = Physics.OverlapSphereNonAlloc(unfoldTarget.position, hitRadius, _colliders, _maskOfPunch);
+        
+        if (touched > 0)
         {
-            //Try Make Punch
-            if(!_colliders[i].TryGetComponent<Damagable>(out var damagable)) continue;
-            damagable.TakeDamage();
+            for (int i = 0; i < _colliders.Length; i++)
+            {
+                //Try Make Punch
+                if (!_colliders[i].TryGetComponent<Damagable>(out var damagable)) continue;
+                damagable.TakeDamage();
+            }
+            onPunched.Invoke();
         }
 
-        onPunched.Invoke();
-        yield return new WaitWhile(() => _isPressing);
+        yield return StartCoroutine(MoveToPosCoroutine(foldTarget));
+        Debug.Log(("Volvio a su normalidad"));
+        
         _punchCoroutine = null;
     }
 
