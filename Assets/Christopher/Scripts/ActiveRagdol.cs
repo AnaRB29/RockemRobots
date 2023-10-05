@@ -18,11 +18,11 @@ public class ActiveRagdol : MonoBehaviour
         SetEnabled(enableRagdoll);
     }
 
-    private void SetEnabled(bool enabled)
+    public void SetEnabled(bool enabled)
     {
         foreach (Rigidbody rb in ragdollRigidbodies)
         {
-            rb.isKinematic = !enabled; // Activa o desactiva la física
+            rb.isKinematic = !enabled; // Activa o desactiva la fï¿½sica
         }
 
         foreach (Collider collider in ragdollColliders)
@@ -30,7 +30,7 @@ public class ActiveRagdol : MonoBehaviour
             collider.enabled = enabled; // Activa o desactiva los colliders
         }
 
-        animator.enabled = !enabled; // Activa o desactiva la animación
+        animator.enabled = !enabled; // Activa o desactiva la animaciï¿½n
     }
 
     private void Update()
@@ -39,8 +39,6 @@ public class ActiveRagdol : MonoBehaviour
         {
             enableRagdoll = true; // Activa el Ragdoll globalmente
             SetEnabled(enableRagdoll);
-
-            
         }
         if (Input.GetKeyDown(KeyCode.T))
         {

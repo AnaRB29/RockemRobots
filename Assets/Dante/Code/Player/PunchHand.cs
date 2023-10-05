@@ -59,10 +59,11 @@ public class PunchHand : MonoBehaviour
         Debug.Log("Bajo la mano");
         
         var touched = Physics.OverlapSphereNonAlloc(unfoldTarget.position, hitRadius, _colliders, _maskOfPunch);
+        Mathf.Clamp(touched, 0, _colliders.Length);
         
         if (touched > 0)
         {
-            for (int i = 0; i < _colliders.Length; i++)
+            for (int i = 0; i < touched; i++)
             {
                 //Try Make Punch
                 if (!_colliders[i].TryGetComponent<Damagable>(out var damagable)) continue;
