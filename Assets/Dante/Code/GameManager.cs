@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(-1)]
 public class GameManager : MonoBehaviour
 {
     public GameManager Instance;

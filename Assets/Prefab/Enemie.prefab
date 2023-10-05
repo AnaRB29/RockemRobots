@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 4123515286244467663}
   - component: {fileID: 4123515286244467662}
   - component: {fileID: 5412548709863732558}
+  - component: {fileID: 559125062}
+  - component: {fileID: 559125063}
+  - component: {fileID: 360986946999860039}
   m_Layer: 6
   m_Name: Enemie
   m_TagString: Untagged
@@ -82,6 +85,95 @@ CapsuleCollider:
   m_Height: 2.2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &559125062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123515286244467661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6140ddbd78634846adade66d1dfb7122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDamageTake:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4123515286848160983}
+        m_TargetAssemblyTypeName: ActiveRagdol, Assembly-CSharp
+        m_MethodName: SetEnabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4123515286244467663}
+        m_TargetAssemblyTypeName: SeekArrival, Assembly-CSharp
+        m_MethodName: SetRagdollActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 559125063}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: EnemyDead
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &559125063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123515286244467661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3079fe699994106469e6290c930b6a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seek: {fileID: 4123515286244467663}
+  rbs:
+  - {fileID: 4123515286107724487}
+  - {fileID: 4123515286612458285}
+  - {fileID: 4123515285474770794}
+  - {fileID: 4123515286649805203}
+  - {fileID: 4123515286856079407}
+  - {fileID: 4123515285339698817}
+  - {fileID: 4123515285999734039}
+  - {fileID: 4123515285915557892}
+  - {fileID: 4123515285915557892}
+  - {fileID: 4123515285915557892}
+--- !u!114 &360986946999860039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123515286244467661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d903816a22ee741a1513a687dde43b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4123515286848160976}
+  seekArrival: {fileID: 4123515286244467663}
 --- !u!1001 &4123515286247639877
 PrefabInstance:
   m_ObjectHideFlags: 0

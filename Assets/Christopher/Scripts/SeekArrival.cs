@@ -9,7 +9,7 @@ public class SeekArrival : MonoBehaviour
     public float speed = 5.0f;
     public float rotationSpeed = 5.0f;
     public float stoppingDistance = 1.0f;
-    public bool ragdollActive = false; // Variable para controlar si el Ragdoll está activado
+    public bool ragdollActive = false;// Variable para controlar si el Ragdoll estï¿½ activado
 
     private void Update()
     {
@@ -19,15 +19,15 @@ public class SeekArrival : MonoBehaviour
             return;
         }
 
-        if (!ragdollActive) // Verifica si el Ragdoll está desactivado
+        if (!ragdollActive) // Verifica si el Ragdoll estï¿½ desactivado
         {
-            // Calcula la dirección hacia el objetivo
+            // Calcula la direcciï¿½n hacia el objetivo
             Vector3 direction = (target.position - transform.position).normalized;
 
-            // Calcula la rotación hacia la dirección del objetivo
+            // Calcula la rotaciï¿½n hacia la direcciï¿½n del objetivo
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-            // Aplica la rotación gradualmente
+            // Aplica la rotaciï¿½n gradualmente
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
             // Calcula la distancia al objetivo
@@ -41,13 +41,13 @@ public class SeekArrival : MonoBehaviour
             }
             else
             {
-                // Si estamos lejos del objetivo, aplica velocidad máxima
+                // Si estamos lejos del objetivo, aplica velocidad mï¿½xima
                 transform.position += transform.forward * speed * Time.deltaTime;
             }
         }
     }
 
-    // Agrega una función para activar/desactivar el Ragdoll desde otro script si es necesario
+    // Agrega una funciï¿½n para activar/desactivar el Ragdoll desde otro script si es necesario
     public void SetRagdollActive(bool isActive)
     {
         ragdollActive = isActive;
